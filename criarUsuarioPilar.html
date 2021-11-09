@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Criar Usuario Pilar</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container mt-5">
+            <div class="col-md-12 bg-secondary">
+                <form onsubmit="cadastrarUsuarioPilar()">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="resumo">Resumo</label>
+                            <textarea  class="form-control" id="resumo" style="height: 300px;" placeholder="resumo"></textarea>
+                        </div>
+                        <div class="col-md-6 mt-4">
+                            <label for="avaliacao">Avaliação</label>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="instagram">Instagram</label>
+                        <input type="text" class="form-control" id="instagram" placeholder="@ig">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+        <script src="criarUsuarioPilar.html"></script>
+    </body>
+</html>

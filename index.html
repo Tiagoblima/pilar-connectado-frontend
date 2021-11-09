@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="box">
+            <div class="box box-header">
+                
+            </div>
+            <div class="box box-body align-items-center">
+                <img src="./pilar-connect.jpg" style="width:200px;margin-top: 15px;margin-left: 400px; border-radius: 50px;"  >
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3  ">
+        <div class="container mt-5 bg-secondary" style="margin-left:450px;">
+        
+            <form onsubmit="Logar()">
+                <label  for="login">Login</label>
+                <input class='form-control' type="text" name="login" id="login" placeholder="usuario@email.com"> 
+                <br>
+                <label for="senha">Senha</label>
+                <input class='form-control' type="text" name="senha" id="senha" placeholder="ex:123456">
+                <button class="btn btn-success mt-2" type="submit"> Entrar</button>
+            </form>
+        </div>  
+    </div>
+    <script src="./login.js"></script>
+</body>
+</html>
