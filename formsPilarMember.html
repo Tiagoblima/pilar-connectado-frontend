@@ -16,9 +16,11 @@
 
     <!-- Custom styles for this template -->
     <link href="./forms_files/form-validation.css" rel="stylesheet">
-
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script data-main="scripts/app" src="scripts/require.js"></script>
+ 
   </head>
 
   <body class="bg-light">
@@ -26,7 +28,7 @@
     <div class="container">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="./images/pilar-connect.jpg" alt="" width="72" height="72">
-        <h2>Cadastro Pilar Digital</h2>
+        <h2>Cadastro Membro do Pilar</h2>
         <p class="lead">
           Preencha o formulário abaixo para ter acesso a plataforma de oportunidades do Porto Digital.
         </p>
@@ -42,7 +44,7 @@
           <div class="col-md-8">
             <form class="needs-validation" novalidate="">
 
-              <div class="form-row align-items-center" >
+              <div class="form-row mb-3 col-md-12" >
   
                 <div class="col-md-6 col-sm-6" >
                   <label class="sr-only" for="inlineFormInputGroup">Instagram</label>
@@ -51,10 +53,10 @@
                       <div class="input-group-text">@</div>
                     </div>
                     <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Instagram">
+                  </div>
                 </div>
-                
-                 </div>
-                  <div class="col-md-4 col-sm-4">
+
+                  <div class="col-md-6 col-sm-6">
                     <label for="avaliacao">Avaliação</label>
                     <span class="fa fa-star checked"></span>
                     <span class="fa fa-star checked"></span>
@@ -62,31 +64,40 @@
                     <span class="fa fa-star"></span>
                     <span class="fa fa-star"></span>
                   </div>
-                </div> 
-  
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="phone">Telefone: </label>
-                    <input type="number" class="form-control" id="phone" placeholder="(81) 9XXXX-XXXX">
+              </div> 
+              
+
+              <div class="form-row col-md-10">
+                <div class="col-md-6 col-sm-6" >
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">Telefone: </div>
+                    </div>
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="(81) 9XXXX-XXXX">
                   </div>
                 </div>
+              </div>
 
-                <div class="form-group col-md-10 row">
-                  <label for="exampleFormControlTextarea1">Fale um pouco sobre você:</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                </div>
-          </div>
+              <div class="form-row col-md-10 row">
+                <label for="exampleFormControlTextarea1">Fale um pouco sobre você:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              </div>
 
-          <img class="mb-2 col-2" src="./images/person_computer.svg" alt="" width="200" height="200">
-            
-         </div>
-
-         <div class="row col-auto">
-          <button type="submit" class="btn btn-primary mb-2">Enviar</button>
-        </div>
-          </form>
-
+              <div class="row col-auto mt-5">
+                <button type="submit" class="btn btn-primary mb-2">Enviar</button>
+              </div>
+            </form>
+          </div>   
           
+          <img class="mb-2 col-2" src="./images/person_computer.svg" alt="" width="200" height="200">
+          
+        </div>
+         
+         
+            
+        
+        
+        
       </div>
 
       <footer class="my-5 pt-5 text-muted text-center text-small">
