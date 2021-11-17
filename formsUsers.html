@@ -33,7 +33,7 @@
         </div>
         <div class="col-md-12 order-md-1 mb-4">
           <h4 class="mb-3">Cadastro</h4>
-          <form class="needs-validation" novalidate="" onsubmit="">
+          <form class="needs-validation" novalidate="" onsubmit="cadastrarUsuario()">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">Primeiro Nome</label>
@@ -65,6 +65,9 @@
               <div class="mb-3">
                 <label for="cpf">CPF</label>
                 <input type="text" class="form-control" id="cpf" placeholder="XXX.XXX.XXX-XX">
+                <div class="invalid-feedback">
+                  Por favor entre com um CPF válido.
+                </div>
               </div>
              </div>
             </div>
@@ -104,8 +107,8 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-check">
-                  <input class="form-check-input" name="exampleRadios" value="2" type="radio" id="gridCheck1">
-                  <label class="form-check-label" for="gridCheck1">
+                  <input class="form-check-input" name="exampleRadios" value="2" type="radio" id="gridCheck2">
+                  <label class="form-check-label" for="gridCheck2">
                    Membro do porto digital
                   </label>
                 </div>
@@ -134,6 +137,7 @@
     <script src="./forms_files/popper.min.js.download"></script>
     <script src="./forms_files/bootstrap.min.js.download"></script>
     <script src="./forms_files/holder.min.js.download"></script>
+    <script src="./forms_files/post.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
