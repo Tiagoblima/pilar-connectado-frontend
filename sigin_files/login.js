@@ -79,6 +79,6 @@ function Logar()
         "password": senha
     }
     credentialsRequest(url, body)
-
     console.log(user)
+    alert(user["info"]["username"]["name"] + " " + "Logado com sucesso")
 }
