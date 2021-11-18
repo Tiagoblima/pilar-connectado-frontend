@@ -12,20 +12,3 @@ function fazPost(url,body)
     }
     return request.responseText
 }
-
-function cadastrarUsuarioPilar()
-{
-    event.preventDefault()
-    let url = 'https://pilar-connectado.herokuapp.com/v1/pilar_member/'
-
-    let resumo = document.getElementById('resumo').value
-    let instagram = document.getElementById('instagram').value
-
-
-    body = {
-        "introduction": resumo,
-        "instagram": instagram
-
-    }
-    fazPost(url,body)
-}
