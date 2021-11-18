@@ -7,6 +7,7 @@ async function sendRequest(method,url,body, keyStorange=null)
 
     await fetch(url, {method:method,
             headers: headers,
+
             body: JSON.stringify(body)
         })
     .then(response => {
@@ -17,7 +18,22 @@ async function sendRequest(method,url,body, keyStorange=null)
 
                 response.json().then(user =>{
                     window.localStorage.setItem(keyStorange, user.id)
-                    window.location.href = "./formsPilarMember.html"
+                    console.log(window.localStorage.getItem('isPilarMember'))
+
+                    if(window.localStorage.getItem('isPilarMember')=="true"){
+                      window.location.replace("./formsPilarMember.html")
+
+                       console.log("entrou aqui")
+                       //window.location.href = './formsPilarMember.html'
+                       
+                    }else{
+                        console.log("nao é pilar member")
+                        window.location.replace("./formsPortoMember.html")
+                        //window.location.href = "./formsPortoMember.html"
+                    }
+
+                   
+
                 })
                 
             }
@@ -27,6 +43,8 @@ async function sendRequest(method,url,body, keyStorange=null)
                 alert("Email já existe")
             })
         }
+    }).catch(error => {
+        alert("Erro ao cadastrar usuário, provavelmente CPF já cadastrado")
     })
   
 }
@@ -48,7 +66,7 @@ function cadastrarUsuario()
     let gridCheckPilarMember = document.getElementById('gridCheckPilarMember').checked
 
     window.localStorage.setItem('isPilarMember', gridCheckPilarMember)
-
+    console.log(window.localStorage.getItem('isPilarMember'))
     console.log(password,password2)
     if (password != password2){
         alert("Senhas não conferem")
