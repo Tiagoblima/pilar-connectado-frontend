@@ -1,11 +1,11 @@
 
-async function sendRequest(method,url,body, keyStorange=null)
+async function sendPostUserRequest(url,body)
 {
     let headers = new Headers();
     
     headers.append("Content-type","application/json");
 
-    await fetch(url, {method:method,
+    await fetch(url, {method:"POST",
             headers: headers,
 
             body: JSON.stringify(body)
@@ -17,7 +17,7 @@ async function sendRequest(method,url,body, keyStorange=null)
             if(keyStorange != null){
 
                 response.json().then(user =>{
-                    window.localStorage.setItem(keyStorange, user.id)
+                    window.localStorage.setItem("userId", user.id)
                     console.log(window.localStorage.getItem('isPilarMember'))
 
                     if(window.localStorage.getItem('isPilarMember')=="true"){
@@ -83,7 +83,7 @@ function cadastrarUsuario()
     }
 
     console.log(body)
-    sendRequest("POST",url,body, 'user')
+    sendPostUserRequest(url,body)
 }
 
 function cadastrarUsuarioPilar()
