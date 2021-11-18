@@ -1,4 +1,6 @@
 
+BASE_URL = 'https://pilar-connectado.herokuapp.com/v1/'
+
 async function sendPostUserRequest(url,body)
 {
     let headers = new Headers();
@@ -14,36 +16,28 @@ async function sendPostUserRequest(url,body)
         
 
         if(response.status == 200){
-            if(keyStorange != null){
+            response.json().then(user =>{
+            window.localStorage.setItem("userId", user.id)
+            console.log(window.localStorage.getItem('isPilarMember'))
 
-                response.json().then(user =>{
-                    window.localStorage.setItem("userId", user.id)
-                    console.log(window.localStorage.getItem('isPilarMember'))
+            if(window.localStorage.getItem('isPilarMember')=="true"){
+                window.location.replace("./formsPilarMember.html")
 
-                    if(window.localStorage.getItem('isPilarMember')=="true"){
-                      window.location.replace("./formsPilarMember.html")
-
-                       console.log("entrou aqui")
-                       //window.location.href = './formsPilarMember.html'
-                       
-                    }else{
-                        console.log("nao é pilar member")
-                        window.location.replace("./formsPortoMember.html")
-                        //window.location.href = "./formsPortoMember.html"
-                    }
-
-                   
-
-                })
+                console.log("entrou aqui")
+                //window.location.href = './formsPilarMember.html'
                 
-            }
-         
+            }else{
+                console.log("nao é pilar member")
+                window.location.replace("./formsPortoMember.html")
+                //window.location.href = "./formsPortoMember.html"
+            }})
         }else{
             response.json().then(error =>{
                 alert("Email já existe")
             })
         }
     }).catch(error => {
+        console.log(error)
         alert("Erro ao cadastrar usuário, provavelmente CPF já cadastrado")
     })
   
@@ -86,19 +80,89 @@ function cadastrarUsuario()
     sendPostUserRequest(url,body)
 }
 
+
+
+
+
+async function sendPostPilarMemberRequest(url,body)
+{
+    let headers = new Headers();
+    
+    headers.append("Content-type","application/json");
+
+    await fetch(url, {method:"POST",
+            headers: headers,
+
+            body: JSON.stringify(body)
+        })
+    .then(response => {
+        
+
+        if(response.status == 200){
+           
+
+            let phone = document.getElementById('phone').value
+
+            sendPostPhoneRequest(BASE_URL+'phone/',{
+                "phone": phone,
+                "id_user": parseInt(window.localStorage.getItem('userId')),
+                "type": document.getElementById('gridCheckCelular').checked ? "Celular" : "Fixo"
+            })
+          
+
+        }else{
+            response.json().then(error =>{
+                alert("Error ao cadastrar")
+            })
+        }
+    }).catch(error => {
+        console.log(error)
+        alert("Erro ao cadastrar usuário")
+    })
+  
+}
+
+
+async function sendPostPhoneRequest(url,body)
+{
+    let headers = new Headers();
+    
+    headers.append("Content-type","application/json");
+
+    await fetch(url, {method:"POST",
+            headers: headers,
+
+            body: JSON.stringify(body)
+        })
+    .then(response => {
+        window.location.replace("./pilarMemberHomePage.html")
+
+      
+    }).catch(error => {
+        console.log(error)
+        alert("Erro ao cadastrar o Telefone")
+    })
+  
+}
+
+
 function cadastrarUsuarioPilar()
 {
     event.preventDefault()
-    let url = 'https://pilar-connectado.herokuapp.com/v1/pilar_member/'
+    let url = BASE_URL+'pilar_member/'
 
-    let resumo = document.getElementById('resumo').value
+    let summary = document.getElementById('summary').value
     let instagram = document.getElementById('instagram').value
+    let id_user = parseInt(window.localStorage.getItem('userId'))
 
+    
 
     body = {
-        "introduction": resumo,
-        "instagram": instagram
-
+        "introduction": summary,
+        "instagram": instagram,
+        "id_user":id_user
     }
-    fazPost(url,body)
+
+    console.log(body)
+    sendPostPilarMemberRequest(url,body)
 }

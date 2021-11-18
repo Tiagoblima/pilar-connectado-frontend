@@ -39,7 +39,7 @@
 
          <div class="row">
           <div class="col-md-8">
-            <form class="needs-validation" novalidate="">
+            <form class="needs-validation" novalidate="" onsubmit="">
 
               <div class="form-row align-items-center" >
   
@@ -48,7 +48,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text">Endereço</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Cais do Apolo 255">
+                    <input type="text" class="form-control" id="address" placeholder="Cais do Apolo 255">
                   </div>
                 </div>
 
@@ -57,7 +57,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text">Telefone: </div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="(81) 9XXXX-XXXX">
+                    <input type="text" class="form-control" id="phone" placeholder="(81) 9XXXX-XXXX">
                   </div>
                 </div>
 
@@ -69,7 +69,7 @@
                     <div class="input-group-prepend">
                       <div class="input-group-text">Empresa: </div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Ex.: Accenture">
+                    <input type="text" class="form-control" id="company" placeholder="Ex.: Accenture">
                   </div>
                 </div>
                 </div>
@@ -104,6 +104,7 @@
     <script src="./forms_files/popper.min.js.download"></script>
     <script src="./forms_files/bootstrap.min.js.download"></script>
     <script src="./forms_files/holder.min.js.download"></script>
+    <script src="./forms_files/post.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
