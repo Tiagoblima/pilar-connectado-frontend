@@ -86,6 +86,8 @@ function cadastrarUsuario()
 
 async function sendPostPilarMemberRequest(url,body)
 {
+
+    console.log(url)
     let headers = new Headers();
     
     headers.append("Content-type","application/json");
@@ -104,9 +106,10 @@ async function sendPostPilarMemberRequest(url,body)
             let phone = document.getElementById('phone').value
 
             sendPostPhoneRequest(BASE_URL+'phone/',{
-                "phone": phone,
-                "id_user": parseInt(window.localStorage.getItem('userId')),
-                "type": document.getElementById('gridCheckCelular').checked ? "Celular" : "Fixo"
+                "number": phone,
+                "type": document.getElementById('gridCheckCelular').checked ? "Celular" : "Fixo",
+                "id_user": parseInt(window.localStorage.getItem('userId'))
+                
             })
           
 
@@ -135,7 +138,14 @@ async function sendPostPhoneRequest(url,body)
             body: JSON.stringify(body)
         })
     .then(response => {
-        window.location.replace("./pilarMemberHomePage.html")
+       
+        if(response.status == 200){
+            window.location.replace("./pilarMemberHomePage.html")
+        }else{
+            response.json().then(error =>{
+                alert("Error ao cadastrar o telefone")
+            })
+        }
 
       
     }).catch(error => {
@@ -160,7 +170,8 @@ function cadastrarUsuarioPilar()
     body = {
         "introduction": summary,
         "instagram": instagram,
-        "id_user":id_user
+        "evaluation": 0,
+        "id_user":id_user,
     }
 
     console.log(body)
