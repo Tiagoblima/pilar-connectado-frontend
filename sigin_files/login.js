@@ -58,7 +58,7 @@ async function credentialsRequest(url = '', data = {}) {
             //credentials: 'user:passwd'
         })
     .then(response => response.json())
-    .then(json => user["info"] = json);
+    .then(json => window.localStorage.setItem('user', JSON.stringify(json)));
   }
   
   
@@ -79,6 +79,6 @@ function Logar()
         "password": senha
     }
     credentialsRequest(url, body)
-    console.log(user)
-    alert(user["info"]["username"]["name"] + " " + "Logado com sucesso")
+    const user = JSON.parse(window.localStorage.getItem('user'))["username"]
+   alert(user["name"] + " " + "Logado com sucesso")
 }
