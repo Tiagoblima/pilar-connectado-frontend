@@ -40,45 +40,58 @@
 
          <div class="row">
           <div class="col-md-8">
-            <form class="needs-validation" novalidate="">
+            <form class="needs-validation" novalidate="" onsubmit="cadastrarUsuarioPilar()">
 
               <div class="form-row mb-3 col-md-12" >
   
-                <div class="col-md-6 col-sm-6" >
-                  <label class="sr-only" for="inlineFormInputGroup">Instagram</label>
+                <div class="col-md-4 col-sm-4" >
+                  <label class="sr-only" for="instagram">Instagram</label>
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
                       <div class="input-group-text">@</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Instagram">
+                    <input type="text" class="form-control" id="instagram" placeholder="Instagram">
                   </div>
                 </div>
 
-                  <div class="col-md-6 col-sm-6">
-                    <label for="avaliacao">Avaliação</label>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <div class="form-row col-md-8">
+                  <div class="col-md-8 col-sm-8" >
+                    <div class="input-group mb-2">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">Telefone: </div>
+                      </div>
+                      <input type="text" class="form-control" id="phone" placeholder="(81) 9XXXX-XXXX">
+                    </div>
                   </div>
+                </div>
               </div> 
               
-
-              <div class="form-row col-md-10">
-                <div class="col-md-6 col-sm-6" >
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">Telefone: </div>
-                    </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="(81) 9XXXX-XXXX">
+              <div class="form-group row mt-4">
+                <div class="col-sm-3">Seu telefone é: </div>
+                
+                <div class="col-sm-4">
+                  <div class="form-check">
+                    <input class="form-check-input" name="gridCheckResidencial" value="Residencial" type="radio" id="gridCheckResidencial">
+                    <label class="form-check-label" for="gridCheckResidencial">
+                      Residencial
+                    </label>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="form-check">
+                    <input class="form-check-input" name="gridCheckCelular" value="Celular" type="radio" id="gridCheckCelular">
+                    <label class="form-check-label" for="gridCheckCelular">
+                     Celular
+                    </label>
                   </div>
                 </div>
               </div>
 
+             
+
               <div class="form-row col-md-10 row">
-                <label for="exampleFormControlTextarea1">Fale um pouco sobre você:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                <label for="summary">Fale um pouco sobre você:</label>
+                <textarea class="form-control" id="summary" rows="5"></textarea>
               </div>
 
               <div class="row col-auto mt-5">
@@ -116,6 +129,7 @@
     <script src="./forms_files/popper.min.js.download"></script>
     <script src="./forms_files/bootstrap.min.js.download"></script>
     <script src="./forms_files/holder.min.js.download"></script>
+    <script src="./forms_files/post.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {

@@ -39,32 +39,42 @@
 
          <div class="row">
           <div class="col-md-8">
-            <form class="needs-validation" novalidate="">
+            <form class="needs-validation" novalidate="" onsubmit="">
 
               <div class="form-row align-items-center" >
   
                 <div class="col-md-6 col-sm-6" >
-                
                   <div class="input-group mb-2">
                     <div class="input-group-prepend">
                       <div class="input-group-text">Endereço</div>
                     </div>
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Cais do Apolo 255">
+                    <input type="text" class="form-control" id="address" placeholder="Cais do Apolo 255">
                   </div>
                 </div>
-              </div>
 
-             <div class="form-row align-items-center">
-              <div class="col-md-6 mb-3">
-                <div class="input-group mb-2">
-                  <div class="input-group-prepend">
-                    <div class="input-group-text">Telefone: </div>
+                <div class="col-md-6 mb-3 mt-3">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">Telefone: </div>
+                    </div>
+                    <input type="text" class="form-control" id="phone" placeholder="(81) 9XXXX-XXXX">
                   </div>
-                  <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="(81) 9XXXX-XXXX">
                 </div>
-              </div>
+
               </div>
 
+              <div class="form-row align-items-center">
+                <div class="col-md-12 mb-3">
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">Empresa: </div>
+                    </div>
+                    <input type="text" class="form-control" id="company" placeholder="Ex.: Accenture">
+                  </div>
+                </div>
+                </div>
+
+                
               <div class="row col-auto">
                 <button type="submit" class="btn btn-primary mb-2">Enviar</button>
               </div>
@@ -94,6 +104,7 @@
     <script src="./forms_files/popper.min.js.download"></script>
     <script src="./forms_files/bootstrap.min.js.download"></script>
     <script src="./forms_files/holder.min.js.download"></script>
+    <script src="./forms_files/post.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {

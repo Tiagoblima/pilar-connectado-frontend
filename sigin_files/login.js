@@ -57,20 +57,23 @@ async function credentialsRequest(url = '', data = {}) {
             headers: headers,
             //credentials: 'user:passwd'
         })
-    .then(response => 
-    {   
+    .then(response => {
+
         if(response.status == 200){
-            user = response.json()
-            alert(user["name"] + " " + "Logado com sucesso")
-            window.localStorage.setItem('user', JSON.stringify(user))
-            window.location.href = "./PilarMemberHomePage.html"
+             response.json().then(user => 
+                {   
+                    console.log(user)
+                    alert(user["username"]["name"] + " " + "Logado com sucesso")
+                    window.localStorage.setItem('userId', user.id)
+                    window.location.href = "./PilarMemberHomePage.html"
+                }
+                )
+            
         }else if(response.status == 401){
             alert("Usuário ou senha incorretos")
         }
-
-        }
-        
-    );
+    })
+   ;
   }
   
 
@@ -88,6 +91,6 @@ function Logar()
         "password": senha
     }
     credentialsRequest(url, body)
-    const user = JSON.parse(window.localStorage.getItem('user'))["username"]
+    console.log(window.localStorage.getItem('userId'))
   
 }
