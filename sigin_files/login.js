@@ -73,15 +73,12 @@ async function credentialsRequest(url = '', data = {}) {
     );
   }
   
-  
-
-  
 
 function Logar()
 {
     event.preventDefault()
     let url = 'https://pilar-connectado.herokuapp.com/v1/users/me'
-
+    
     let email = document.getElementById('login').value
     let senha = document.getElementById('senha').value
     

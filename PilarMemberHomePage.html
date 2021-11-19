@@ -48,7 +48,7 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Bem-vindo(a)</h1>
+          <h1 class="display-3" id="cabecalhoPag">Bem-vindo(a)</h1>
           <p>Esse é o portal de transformação do Porto digital, encontro oportunidades na nossa plataforma.</p>
           <p>
             <h2>Oportunidades</h2>
@@ -58,7 +58,7 @@
 
       <div class="container">
         <!-- Example row of columns -->
-        <div class="row">
+       <!--  <div class="row">
           <div class="col-md-4">
             <h2>Título</h2>
             <p>Descrição...</p>
@@ -66,7 +66,7 @@
               Habilidade requerida: 
             </p>
             <p>
-              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button">Ver detalhes »</a>
+              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button" value="">Ver detalhes »</a>
             </p>
           </div>
           <div class="col-md-4">
@@ -85,7 +85,7 @@
               <a class="btn btn-secondary" href="./opportunityDetails.html" role="button">Ver detalhes »</a>
             </p>
           </div>
-        </div>
+        </div> -->
 
         <hr>
 
@@ -105,5 +105,77 @@
     <script src="./profile_files/popper.min.js.download"></script>
     <script src="./profile_files/bootstrap.min.js.download"></script>
   
+    <script>
+      let data = {"info":{}}
+      function getOpportunity(url)
+      {
+          fetch(url).then(function(response)
+          {
+           return response.json();
+          }).then(function(data)
+          {
+            console.log(data)
+            localStorage.setItem("opportunity", JSON.stringify(data));
+           
+          }).catch(function()
+          {
+            console.log("houve algum Erro");
+          });
+          
+      }
 
-</body></html>
+      function criaLinha(opportunity)
+      {
+        divRow = document.createElement("div");
+        divCol = document.createElement("div");
+        h2 = document.createElement("h2");
+        p1 = document.createElement("p");
+        p2 = document.createElement("p");
+        p3 = document.createElement("p");
+        bt = document.createElement("button");
+
+        divRow.className = "row"
+        divCol.className = "col-md-4"
+        /* 
+           <div class="col-md-4">
+            <h2>Título</h2>
+            <p>Descrição...</p>
+            <p>Habilidade requerida: </p>
+            <p>
+              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button">Ver detalhes »</a>
+            </p>
+          </div>
+        */
+       
+        h2.innerHTML = opportunity.description
+        p1.innerHTML = opportunity.startDate
+        p2.innerHTML = opportunity.endDate
+        p3.innerHTML = opportunity.id
+        
+        divRow.appendChild(divCol);
+        divRow.appendChild(h2);
+        divRow.appendChild(p1);
+        divRow.appendChild(p2);
+        divRow.appendChild(p3);
+      }
+
+      function main()
+      {
+        data = getOpportunity("https://pilar-connectado.herokuapp.com/v1/opportunity")
+        let opportunity = JSON.parse(data);
+        console.log(opportunity);
+        
+      let divRow = document.getElementById('div')
+        opportunity.forEach(element =>
+        {
+       
+          let divRow = criaLinha(element)
+        
+        })
+    }
+      main()
+
+    </script>
+</body>
+
+</html>
