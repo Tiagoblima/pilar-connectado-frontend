@@ -84,7 +84,7 @@ function cadastrarUsuario()
 
 
 
-async function sendPostPilarMemberRequest(url,body)
+async function sendPostMemberRequest(url,body)
 {
 
     console.log(url)
@@ -110,6 +110,22 @@ async function sendPostPilarMemberRequest(url,body)
                 "type": document.getElementById('gridCheckCelular').checked ? "Celular" : "Fixo",
                 "id_user": parseInt(window.localStorage.getItem('userId'))
                 
+            }).then(response => {
+       
+                if(response.status == 200){
+
+                    window.location.replace("./pilarMemberHomePage.html")
+
+                }else{
+                    response.json().then(error =>{
+                        alert("Error ao cadastrar o telefone")
+                    })
+                }
+        
+              
+            }).catch(error => {
+                console.log(error)
+                alert("Erro ao cadastrar o Telefone")
             })
           
 
@@ -132,29 +148,12 @@ async function sendPostPhoneRequest(url,body)
     
     headers.append("Content-type","application/json");
 
-    await fetch(url, {method:"POST",
+    return await fetch(url, {method:"POST",
             headers: headers,
 
             body: JSON.stringify(body)
         })
-    .then(response => {
-       
-        if(response.status == 200){
-            window.location.replace("./pilarMemberHomePage.html")
-        }else{
-            response.json().then(error =>{
-                alert("Error ao cadastrar o telefone")
-            })
-        }
-
-      
-    }).catch(error => {
-        console.log(error)
-        alert("Erro ao cadastrar o Telefone")
-    })
-  
 }
-
 
 function cadastrarUsuarioPilar()
 {
@@ -175,5 +174,30 @@ function cadastrarUsuarioPilar()
     }
 
     console.log(body)
-    sendPostPilarMemberRequest(url,body)
+    sendPostMemberRequest(url,body)
+}
+
+
+
+function cadastrarUsuarioPorto()
+{
+    event.preventDefault()
+    let url = BASE_URL+'porto_member/'
+
+    let address = document.getElementById('address').value
+   
+    let company = document.getElementById('company').value
+
+    let id_user = parseInt(window.localStorage.getItem('userId'))
+
+    
+
+    body = {
+        "workaddress": address,
+        "company_name": company,
+        "id_user":id_user,
+    }
+
+    console.log(body)
+    sendPostMemberRequest(url,body)
 }
