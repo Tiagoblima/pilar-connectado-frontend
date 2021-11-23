@@ -7,7 +7,7 @@ async function sendPostUserRequest(url,body)
     
     headers.append("Content-type","application/json");
 
-    await fetch(url, {method:"POST",
+    await fetch(BASE_URL+url, {method:"POST",
             headers: headers,
 
             body: JSON.stringify(body)
@@ -46,7 +46,7 @@ async function sendPostUserRequest(url,body)
 function cadastrarUsuario()
 {
     event.preventDefault()
-    let url = ' https://pilar-connectado.herokuapp.com/v1/users/'
+    let url = 'users/'
 
     let firstName = document.getElementById('firstName').value.toString()
     let lastName = document.getElementById('lastName').value.toString()
