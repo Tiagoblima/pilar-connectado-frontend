@@ -121,7 +121,8 @@
         p0.innerHTML = 'Valor R$: '+ opportunity.value
         bt.innerHTML =  "Detalhe"
         bt.onclick =  function (){
-            localStorage.setItem("id_Opoortunity", opportunity.id)
+            localStorage.setItem("id_Opoortunity", opportunity.id);
+            location.href = "./opportunityDetails.html";
         }
         
         
