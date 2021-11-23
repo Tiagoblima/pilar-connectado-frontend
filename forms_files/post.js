@@ -114,7 +114,7 @@ async function sendPostMemberRequest(url,body)
        
                 if(response.status == 200){
 
-                    window.location.replace("./pilarMemberHomePage.html")
+                    window.location.replace("./index.html")
 
                 }else{
                     response.json().then(error =>{
