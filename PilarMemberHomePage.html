@@ -56,40 +56,10 @@
         </div>
       </div>
 
-      <div class="container">
-        <!-- Example row of columns -->
-       <!--  <div class="row">
-          <div class="col-md-4">
-            <h2>Título</h2>
-            <p>Descrição...</p>
-            <p>
-              Habilidade requerida: 
-            </p>
-            <p>
-              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button" value="">Ver detalhes »</a>
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h2>Título</h2>
-            <p>Descrição...</p>
-            <p>Habilidade requerida: </p>
-            <p>
-              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button">Ver detalhes »</a>
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h2>Título</h2>
-            <p>Descrição...</p>
-            <p>Habilidade requerida: </p>
-            <p>
-              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button">Ver detalhes »</a>
-            </p>
-          </div>
-        </div> -->
+  <div class="container" id="div">
 
-        <hr>
-
-      </div> <!-- /container -->
+  </div>
+      
 
     </main>
 
@@ -114,7 +84,7 @@
            return response.json();
           }).then(function(data)
           {
-            console.log(data)
+            //console.log(data)
             localStorage.setItem("opportunity", JSON.stringify(data));
            
           }).catch(function()
@@ -129,51 +99,67 @@
         divRow = document.createElement("div");
         divCol = document.createElement("div");
         h2 = document.createElement("h2");
+        p0 = document.createElement("p");
         p1 = document.createElement("p");
         p2 = document.createElement("p");
         p3 = document.createElement("p");
         bt = document.createElement("button");
 
-        divRow.className = "row"
-        divCol.className = "col-md-4"
-        /* 
-           <div class="col-md-4">
-            <h2>Título</h2>
-            <p>Descrição...</p>
-            <p>Habilidade requerida: </p>
-            <p>
-              <a class="btn btn-secondary" href="./opportunityDetails.html" role="button">Ver detalhes »</a>
-            </p>
-          </div>
-        */
+        divRow.className = "card mb-3 ml-2";
+        divCol.className = "col-md-8 card-body";
+        h2.className = "card-title";
+        h2.className = "card-text";
+        h2.className = "card-text";
+        h2.className = "card-text";
+        h2.className = "card-text";
+        bt.className = "btn btn-primary";
+
        
-        h2.innerHTML = opportunity.description
-        p1.innerHTML = opportunity.startDate
-        p2.innerHTML = opportunity.endDate
-        p3.innerHTML = opportunity.id
+        h2.innerHTML =  opportunity.description
+        p1.innerHTML = 'Date Inicio: '+ opportunity.startDate
+        p2.innerHTML = 'Data Fim: '+ opportunity.endDate
+        p0.innerHTML = 'Valor R$: '+ opportunity.value
+        bt.innerHTML =  "Detalhe"
+        bt.onclick =  function (){
+            localStorage.setItem("id_Opoortunity", opportunity.id)
+        }
+        
         
         divRow.appendChild(divCol);
-        divRow.appendChild(h2);
-        divRow.appendChild(p1);
-        divRow.appendChild(p2);
-        divRow.appendChild(p3);
+        divCol.appendChild(h2);
+        divCol.appendChild(p1);
+        divCol.appendChild(p2);
+        divCol.appendChild(p3);
+        divCol.appendChild(p0);
+        divCol.appendChild(bt);
+
+        return divRow;
+    
+     
       }
 
       function main()
       {
         data = getOpportunity("https://pilar-connectado.herokuapp.com/v1/opportunity")
-        let opportunity = JSON.parse(data);
-        console.log(opportunity);
+
+        let opportunity = JSON.parse(localStorage.getItem("opportunity"));
+        //console.log(opportunity);
         
-      let divRow = document.getElementById('div')
+        let divRow = document.getElementById('div')
         opportunity.forEach(element =>
         {
        
-          let divRow = criaLinha(element)
+         /*  let divRow = criaLinha(element)
+          divRow.appendChild(divCol)   */
+          let divCol = criaLinha(element)
+          divRow.appendChild(divCol) 
+          divRow.className = "row"; 
+
         
         })
     }
-      main()
+
+     main()
 
     </script>
 </body>

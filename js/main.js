@@ -45,7 +45,6 @@ function main()
    
     //document.getElementById('pas').value = ""
     usuario.forEach(element =>{
-       
             let linha = criaLinha(element)
             tabela.appendChild(linha)  
 
