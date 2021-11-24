@@ -110,24 +110,7 @@ async function sendPostMemberRequest(url,body)
                 "type": document.getElementById('gridCheckCelular').checked ? "Celular" : "Fixo",
                 "id_user": parseInt(window.localStorage.getItem('userId'))
                 
-            }).then(response => {
-       
-                if(response.status == 200){
-
-                    window.location.replace("./index.html")
-
-                }else{
-                    response.json().then(error =>{
-                        alert("Error ao cadastrar o telefone")
-                    })
-                }
-        
-              
-            }).catch(error => {
-                console.log(error)
-                alert("Erro ao cadastrar o Telefone")
             })
-          
 
         }else{
             response.json().then(error =>{
@@ -142,6 +125,39 @@ async function sendPostMemberRequest(url,body)
 }
 
 
+
+async function sendPostSkillPilarMemberRequest(url,body)
+{
+    let headers = new Headers();
+    
+    headers.append("Content-type","application/json");
+
+    await fetch(url, {method:"POST",
+            headers: headers,
+
+            body: JSON.stringify(body)
+        })
+    .then(response => {
+        
+
+        if(response.status == 200){
+            window.location.replace("./index.html")
+        }else{
+            response.json().then(error =>{
+                alert("Error ao cadastrar")
+            })
+        }
+    }).catch(error => {
+        console.log(error)
+        alert("Erro ao cadastrar")
+    })
+  
+}
+
+
+
+
+
 async function sendPostPhoneRequest(url,body)
 {
     let headers = new Headers();
@@ -152,6 +168,19 @@ async function sendPostPhoneRequest(url,body)
             headers: headers,
 
             body: JSON.stringify(body)
+        }).then(response => {
+       
+            if(response.status != 200){
+
+                response.json().then(error =>{
+                    alert("Error ao cadastrar o telefone")
+                })
+
+            }
+    
+        }).catch(error => {
+            console.log(error)
+            alert("Erro ao cadastrar o Telefone")
         })
 }
 
