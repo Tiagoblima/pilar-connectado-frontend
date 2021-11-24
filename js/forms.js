@@ -244,13 +244,33 @@ getSkillsList = async function() {
         headers: headers,
     }).then(response => response.json().then(data => {
         console.log(data);
-        let selectDOM = document.getElementById("selectSkill")
+        let selectDOM = document.getElementById("skillList")
         data.forEach(element => {
 
-            let option = document.createElement("option");
-            option.value = element.id;
-            option.text = element.name;
-            selectDOM.appendChild(option);
+
+            /**
+             *  <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Default checkbox
+                </label>
+              </div>
+             */
+
+            let div = document.createElement("div");
+            div.className = "form-check"
+            let input = document.createElement("input");
+            input.className = "form-check-input"
+            input.type = "checkbox"
+            input.id = element.id
+            input.value = element.id
+            let label = document.createElement("label")
+            label.className = "form-check-label"
+            label.innerHTML = element.name
+            label.setAttribute("for",element.id)
+            div.appendChild(input)
+            div.appendChild(label)
+            selectDOM.appendChild(div)
         }
         )
     })).catch(error => console.error('Error:', error));
