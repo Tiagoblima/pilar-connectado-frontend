@@ -52,19 +52,21 @@
           <p>Esse é o portal de transformação do Porto digital, encontro oportunidades na nossa plataforma.</p>
           <p>
             <h2>Oportunidades</h2>
-            <span>
-              <div class="col-md-4 col-sm-4">
-                <select id="selectSkill" class="form-select form-select-lg" aria-label=".form-select-lg example">
-                  <option selected>O que você deseja encontrar?</option>
-                  
-                </select>
-              </div>
-            </span>
           </p>
         </div>
       </div>
+      <nav class="navbar navbar-light bg-light mb-5 justify-content-center">
+        <a class="navbar-brand" href="#">Filtros</a>
 
+        <!-- Example single danger button -->
+        <div class="btn-group mb-3" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary">Oportunidades</button>
+          <button type="button" class="btn btn-info">Pessoas</button>
+        </div>
+        <div id="skillList" class="form-row" />
+      </nav>
   <div class="container" id="div">
+    <!-- As a link -->
 
   </div>
       
@@ -82,7 +84,7 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="./js/popper.min.js.download"></script>
     <script src="./js/bootstrap.min.js.download"></script>
-  
+    <script src="./js/index.js"></script>
     <script>
       let data = {"info":{}}
       function getOpportunity(url)
