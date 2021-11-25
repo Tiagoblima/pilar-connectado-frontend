@@ -96,32 +96,34 @@ async function sendPostMemberRequest(url,body)
             headers: headers,
 
             body: JSON.stringify(body)
-        })
-    .then(response => {
-        
-
-        if(response.status == 200){
-           
-
-            let phone = document.getElementById('phone').value
-
-            sendPostPhoneRequest(BASE_URL+'phone/',{
-                "number": phone,
-                "type": document.getElementById('gridCheckCelular').checked ? "Celular" : "Fixo",
-                "id_user": parseInt(window.localStorage.getItem('userId'))
+        }).then(response => {
+            console.log(response.status)
+            response.json().then(member =>{
+               
+                childNodes = document.getElementById('skillList').childNodes
                 
-            })
+                for(i=1; i < childNodes.length; i++){
+                   
+                   if(childNodes[i].firstChild.checked==true){
+                       let skill = childNodes[i].firstChild.value
+                       let url = BASE_URL+'skill_pilar_member/'
+                       let body = {
+                           "id_pilarmember": member.id,
+                           "id_skill": parseInt(skill)
+                       }
+                       console.log(body)
+                       sendPostSkillPilarMemberRequest(url,body)
+                   }
+                    
+                }
 
-        }else{
-            response.json().then(error =>{
-                alert("Error ao cadastrar")
-            })
-        }
-    }).catch(error => {
-        console.log(error)
-        alert("Erro ao cadastrar usuário")
-    })
-  
+            }).finally(
+                window.location.replace("./index.html")
+            )
+
+        })
+    
+    
 }
 
 
@@ -134,14 +136,14 @@ async function sendPostSkillPilarMemberRequest(url,body)
 
     await fetch(url, {method:"POST",
             headers: headers,
-
+            mode:'no-cors',
             body: JSON.stringify(body)
         })
     .then(response => {
         
 
         if(response.status == 200){
-            window.location.replace("./index.html")
+            console.log("sucesso")
         }else{
             response.json().then(error =>{
                 alert("Error ao cadastrar")
@@ -155,7 +157,7 @@ async function sendPostSkillPilarMemberRequest(url,body)
 }
 
 
-
+console.log(window.localStorage.getItem('isPilarMember'))
 
 
 async function sendPostPhoneRequest(url,body)
