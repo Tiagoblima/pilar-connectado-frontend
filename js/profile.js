@@ -12,9 +12,9 @@ const getByIdRequest = async(url, id) =>
 }
 
 
-function showPilarMemberDetails(pilarMember)
+function showPilarMemberDetails()
 {
-
+  
 
 }
 
@@ -27,3 +27,12 @@ function showPosters(pilarMemberId){
 
 
 }
+
+
+function main(){
+
+  console.log(localStorage.getItem("userId"));
+
+
+}
+main();

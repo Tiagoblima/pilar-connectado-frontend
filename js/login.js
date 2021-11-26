@@ -63,8 +63,9 @@ async function credentialsRequest(url = '', data = {}) {
              response.json().then(user => 
                 {   
                     console.log(user)
-                    alert(user["username"]["name"] + " " + "Logado com sucesso")
-                    window.localStorage.setItem('userId', user.id)
+                    alert( user["username"]["id"] + " " + "Logado com sucesso")
+                    console.log(user)
+                    localStorage.setItem('userId', user["username"]["id"])
                     window.location.href = "./home.html"
                 }
                 )
