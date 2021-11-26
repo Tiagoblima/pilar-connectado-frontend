@@ -65,7 +65,7 @@ async function credentialsRequest(url = '', data = {}) {
                     console.log(user)
                     alert(user["username"]["name"] + " " + "Logado com sucesso")
                     window.localStorage.setItem('userId', user.id)
-                    window.location.href = "./index.html"
+                    window.location.href = "./home.html"
                 }
                 )
             
