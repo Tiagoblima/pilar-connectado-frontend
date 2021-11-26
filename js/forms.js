@@ -118,7 +118,7 @@ async function sendPostMemberRequest(url,body)
                 }
 
             }).finally(
-                window.location.replace("./index.html")
+                window.location.replace("./home.html")
             )
 
         })
