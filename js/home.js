@@ -50,20 +50,9 @@ getSkillsList();
 
 
 let data = {"info":{}}
-function getOpportunity(url)
+async function getOpportunity(url)
 {
-    fetch(url).then(function(response)
-    {
-     return response.json();
-    }).then(function(data)
-    {
-      //console.log(data)
-      localStorage.setItem("opportunity", JSON.stringify(data));
-     
-    }).catch(function()
-    {
-      console.log("houve algum Erro");
-    });
+  return await (await fetch(BASE_URL + url)).json();
     
 }
 
@@ -114,23 +103,27 @@ function criaLinha(opportunity)
 
 function main()
 {
-  data = getOpportunity("https://pilar-connectado.herokuapp.com/v1/opportunity")
+  data = 
 
-  let opportunity = JSON.parse(localStorage.getItem("opportunity"));
+  //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
-  
+  console.log(data);
   let divRow = document.getElementById('div')
-  opportunity.forEach(element =>
-  {
- 
-   /*  let divRow = criaLinha(element)
-    divRow.appendChild(divCol)   */
-    let divCol = criaLinha(element)
-    divRow.appendChild(divCol) 
-    divRow.className = "row"; 
-
+  getOpportunity("opportunity/").then(opportunityList => {
+    opportunityList.forEach(element =>
+      {
+     
+       /*  let divRow = criaLinha(element)
+        divRow.appendChild(divCol)   */
+        let divCol = criaLinha(element)
+        divRow.appendChild(divCol) 
+        divRow.className = "row"; 
+    
+      
+      })
+  });
   
-  })
+  
 }
 
 main()
