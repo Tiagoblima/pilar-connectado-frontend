@@ -32,82 +32,125 @@
         </p>
       </div>
 
-      <div class="text-center">
-        </div>
-        <div class="col-md-12 order-md-1 mb-4 justify-content-center">
+      <div class="col-md-12 order-md-1 mb-4 justify-content-center">
          
 
 
-         <div class="row">
-          <div class="col-md-8">
-            <form class="needs-validation" novalidate="">
-
-              <div class="form-row align-items-center" >
+        <div class="row">
+          
+          <div class="col-md-8 align-items-center" >
   
-                <div class="col-md-6 col-sm-6" >
-                  <label class="sr-only" for="inlineFormInputGroup">Instagram</label>
-                  <div class="input-group mb-2">
-                    <div class="input-group-prepend">
-                      <div class="input-group-text">@</div>
-                    </div>
-                    Instagram
-                </div>
-                 </div>
-                  <div class="col-md-4 col-sm-4">
-                    <label for="avaliacao">Avaliação</label>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+           <div class="row">
+              <div class="col-md-4 col-sm-4" >
+                <label class="sr-only" for="inlineFormInputGroup">Instagram</label>
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
                   </div>
-                </div> 
-                <div class="form-group col-md-10 row">
-                  <label for="exampleFormControlTextarea1">Sobre você:</label>
-                  <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="5"></textarea>
+                  <span id="instagram"></span>
                 </div>
+              </div>
+
+                  
+              <div class="col-md-4 col-sm-4">
+                <label for="avaliacao">Avaliação</label>
+                <span class="fa fa-star" style="color: goldenrod;"></span>
+              </div>
+           </div>
+
+
+                
+            <div class="form-group col-md-10 row">
+              <label for="exampleFormControlTextarea1">Sobre você:</label>
+              <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+
+
+
+
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Minhas Habilidades
+                    </button>
+                  </h5>
+                </div>
+            
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Meus Posters
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Minhas Candidaturas
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+
+
           <div class="col-md-4 order-md-1 mb-4">
             <h4 class="mb-3">Minhas Informações</h4>
-            <form class="needs-validation" novalidate="">
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label for="firstName">Primeiro Nome</label>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="lastName">Último Nome</label>
-                </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name">Nome</label>
+                <span id="name"></span>
               </div>
-  
-              <div class="row">
-               <div class="col-md-6">
-                 <div class="mb-3">
-                  <label for="email">Email </label>
-                 </div>
+            </div>
+
+            <div class="row">
+             <div class="col-md-6">
+               <div class="mb-3">
+                <label for="email">Email </label>
+                <span id="email"></span>
                </div>
-               <div class="col-md-6">
-                <div class="mb-3">
-                  <label for="address2">CPF</label>
-                </div>
-               </div>
-              </div>
-              
+             </div>
+             <div class="col-md-6">
               <div class="mb-3">
-                <label for="address">Endereço</label>
+                <label for="address2">CPF</label>
+                <span id="cpf"></span>
               </div>
-        </div>
-        </div>
-     
-
+             </div>
+            </div>
             
-         </div>
-
-         
-          </form>
-
+            <div class="mb-3">
+              <label for="address">Endereço</label>
+              <span id="address"></span>
+            </div>  
+          </div>
+        </div>
+        
+      </div>
           
       </div>
-
+      </div>
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">© 2017-2018 Powered by Bootstrap</p>
         <ul class="list-inline">
