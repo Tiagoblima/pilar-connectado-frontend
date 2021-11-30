@@ -74,6 +74,52 @@ function showUserDetails(user_id)
     )
 }
 
+
+function showSkills(pilarMemberId)
+{
+
+  getByIdRequest("skill/by/pilar_member/", pilarMemberId).then(
+
+    (data) => {
+
+      /**
+       * <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3">Habilidade</span>
+                <span id="skillName"></span>
+              </div>
+              <div>
+                <span class="input-group-text" id="basic-addon3">Nível</span>
+                <span id="skillLevel"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Descrição</label>
+              <textarea class="form-control" disabled id="skillsDescription" rows="5"></textarea>
+            </div>
+          </div>
+        </div>
+* 
+       */
+      let skills = document.getElementById("skills");
+
+      for(let i = 0; i < data.length; i++){
+
+        let skill = document.createElement("li");
+        skill.innerHTML = data[i].name;
+        skills.appendChild(skill);
+
+      }
+
+    }
+
+  );
+
+}
 function showPosters(pilarMemberId){
 
 
