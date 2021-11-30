@@ -41,8 +41,8 @@ function showPortoMemberDetails(portoMemberId)
       }
      });
 
-     getByIdRequest("users/", portoMember.id_user).then(user => {
-
+     getByIdRequest("user/by/id/", portoMember.id_user).then(user => {
+      console.log(user);
       document.getElementById("name").innerHTML = user.name;
       document.getElementById("email").innerHTML = user.email;
       
