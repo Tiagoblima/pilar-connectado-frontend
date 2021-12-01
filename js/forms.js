@@ -234,7 +234,7 @@ function cadastrarUsuarioPorto()
 }
 
 
-getSkillsList = async function() {
+getSkillsList = async function(elementId, inputType) {
 
 
     let headers = new Headers();
@@ -246,7 +246,7 @@ getSkillsList = async function() {
         headers: headers,
     }).then(response => response.json().then(data => {
         console.log(data);
-        let selectDOM = document.getElementById("skillList")
+        let selectDOM = document.getElementById(elementId)
         data.forEach(element => {
 
 
@@ -263,7 +263,7 @@ getSkillsList = async function() {
             div.className = "form-check"
             let input = document.createElement("input");
             input.className = "form-check-input"
-            input.type = "checkbox"
+            input.type = inputType
             input.id = element.id
             input.value = element.id
             let label = document.createElement("label")
@@ -279,4 +279,6 @@ getSkillsList = async function() {
 
 
 }
-getSkillsList();
+getSkillsList("skillList", "checkbox");
+
+getSkillsList("skillListRadio", "radio");
