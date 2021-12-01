@@ -259,21 +259,21 @@ getSkillsList = async function(elementId, inputType) {
               </div>
              */
 
-            let div = document.createElement("div");
-            div.className = "form-check"
-            let input = document.createElement("input");
-            input.className = "form-check-input"
-            input.type = inputType
-            input.id = element.id
-            input.value = element.id
-            input.name = 'skillSelector'
-            let label = document.createElement("label")
-            label.className = "form-check-label"
-            label.innerHTML = element.name
-            label.setAttribute("for",element.id)
-            div.appendChild(input)
-            div.appendChild(label)
-            selectDOM.appendChild(div)
+              let div = document.createElement("div");
+              div.className = "form-check"
+              let input = document.createElement("input");
+              input.className = "form-check-input"
+              input.type = inputType
+              input.id = element.id
+              input.value = element.id
+              input.name = 'skillSelector'
+              let label = document.createElement("label")
+              label.className = "form-check-label"
+              label.innerHTML = element.name
+              label.setAttribute("for",element.id)
+              div.appendChild(input)
+              div.appendChild(label)
+              selectDOM.appendChild(div)
         }
         )
     })).catch(error => console.error('Error:', error));
@@ -285,3 +285,60 @@ getSkillsList("skillList", "checkbox");
 getSkillsList("skillListRadio", "radio");
 
 
+const getByIdRequest = async(url, id) =>
+{   
+  //fetch(url).then(response => response.json).then(console.log);
+  
+  return await (await fetch(BASE_URL + url +`${id}/`)).json();
+  //showOpportunityDetails(await opportunity.json());
+  //const portoMember = await fetch(BASE_URL + "opportunity/by/id/2/");
+  //showPortoMemberDetails(portoMember);
+  //return await data.json();
+}
+
+function cadastrarOportunidade(){
+
+
+    event.preventDefault()
+    let url = BASE_URL+'opportunity/'
+    localStorage.setItem('userId', 4)
+    let title = document.getElementById('title').value
+    let description = document.getElementById('description').value
+    let id_user = parseInt(window.localStorage.getItem('userId'))
+
+    childNodes = document.getElementById('skillListRadio').childNodes
+    let id_skill = null            
+    for(i=1; i < childNodes.length; i++){
+    
+        if(childNodes[i].firstChild.checked==true){
+            id_skill = childNodes[i].firstChild.value
+            
+        }
+            
+    }
+    
+    if(id_skill == undefined){
+        alert("Selecione uma habilidade")
+    }
+    console.log(id_user)
+    getByIdRequest('porto_member/by/userId/',id_user).then(portomember =>{
+        console.log(portomember)
+        body = {
+            "title": title,
+            "description": description,
+            "id_portomember":portomember.id,
+            "id_skill":parseInt(id_skill),
+        }
+    
+        console.log(body)
+        sendPostOpportunityRequest(url,body)
+
+
+    })
+
+   
+
+    
+
+
+}

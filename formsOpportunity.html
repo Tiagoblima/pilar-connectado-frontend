@@ -44,22 +44,29 @@
 
 
         
-          <form class="needs-validation form-row" novalidate="" onsubmit="cadastrarUsuarioPilar()">
+          <form class="needs-validation form-row" novalidate="" onsubmit="cadastrarOportunidade()">
 
            <div class="col-md-8"  >
 
             <div class="form-row mb-3" >
 
-              <div class="col-md-7 col-sm-7" >
+              <div class="col-md-6 col-sm-6" >
+                <div class="input-group mb-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">Título</div>
+                  </div>
+                  <input type="text" class="form-control" id="title" placeholder="Título">
+                </div>
                 
+              </div>
+              <div class="col-md-5 col-sm-5" >
                 <div class="input-group mb-2">
                   <div class="input-group-prepend">
                     <div class="input-group-text">R$</div>
                   </div>
-                  <input type="text" class="form-control" id="valor 0,00" placeholder="Valor">
+                  <input type="text" class="form-control" id="" placeholder="Valor 0,00">
                 </div>
               </div>
-
             </div>
           
               
@@ -69,19 +76,21 @@
 
 
               <div class="col-md-6 col-sm-6" >
-                Inicio: <input id="startDate" width="276" />
+                Inicio: <input id="startDate" width="276" class="selector"/>
               </div>
               
               <div class="col-md-6 col-sm-6">
-                Fim: <input id="endDate" width="276" />  
+                Fim: <input id="endDate" width="276" class="selector" />  
               </div>
 
               <script>
                 var today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+               
                 $('#startDate').datepicker({
                     uiLibrary: 'bootstrap4',
                     iconsLibrary: 'fontawesome',
                     minDate: today,
+                    dateFormat: 'dd-mm-yy',
                     maxDate: function () {
                         return $('#endDate').val();
                     }
@@ -93,12 +102,13 @@
                         return $('#startDate').val();
                     }
                 });
+                $( ".selector" ).datepicker({ dateFormat: 'dd-mm-yy' });
             </script>
             </div>
 
-            <div class="form-row">
-              <label for="summary">Fale um pouco sobre a oportunidade:</label>
-              <textarea class="form-control" id="summary" rows="5"></textarea>
+            <div class="form-row col-md-11">
+              <label for="description">Fale um pouco sobre a oportunidade:</label>
+              <textarea class="form-control" id="description" rows="5"></textarea>
             </div>
 
             <div class="form-row col-auto mt-5">
@@ -108,10 +118,9 @@
            </div>
 
            <div class="col-md-4">
-            <h5>Selecione suas habilidades</h4>
+            <h5>Selecione a habilidade</h4>
               <div id="skillListRadio" />
-                
-             
+              
            </div>
            
 
