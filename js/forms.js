@@ -266,6 +266,7 @@ getSkillsList = async function(elementId, inputType) {
             input.type = inputType
             input.id = element.id
             input.value = element.id
+            input.name = 'skillSelector'
             let label = document.createElement("label")
             label.className = "form-check-label"
             label.innerHTML = element.name
@@ -282,3 +283,5 @@ getSkillsList = async function(elementId, inputType) {
 getSkillsList("skillList", "checkbox");
 
 getSkillsList("skillListRadio", "radio");
+
+
