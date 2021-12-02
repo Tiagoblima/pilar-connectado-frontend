@@ -200,7 +200,7 @@ function cadastrarUsuarioPilar()
     body = {
         "introduction": summary,
         "instagram": instagram,
-        "evaluation": 0,
+        "evaluation": 1,
         "id_user":id_user,
     }
 
@@ -296,15 +296,46 @@ const getByIdRequest = async(url, id) =>
   //return await data.json();
 }
 
+
+async function sendPostOpportunityRequest(url,body){
+
+    let headers = new Headers();
+    
+    headers.append("Content-type","application/json");
+
+    await fetch(url, {method:"POST",
+            headers: headers,
+            mode:'no-cors',
+            body: JSON.stringify(body)
+        })
+    .then(response => {
+        console.log(body)
+
+        if(response.status == 200){
+            console.log("sucesso")
+        }else{
+            alert("Error ao cadastrar")
+        }
+    }).catch(error => {
+        console.log(error)
+        alert("Erro ao cadastrar")
+    })
+
+
+}
+
 function cadastrarOportunidade(){
 
 
     event.preventDefault()
-    let url = BASE_URL+'opportunity/'
+    
     localStorage.setItem('userId', 4)
     let title = document.getElementById('title').value
     let description = document.getElementById('description').value
     let id_user = parseInt(window.localStorage.getItem('userId'))
+    let startDate = document.getElementById('startDate').value
+    let endDate = document.getElementById('endDate').value
+    let value = document.getElementById('value').value
 
     childNodes = document.getElementById('skillListRadio').childNodes
     let id_skill = null            
@@ -324,14 +355,19 @@ function cadastrarOportunidade(){
     getByIdRequest('porto_member/by/userId/',id_user).then(portomember =>{
         console.log(portomember)
         body = {
+ 
+            "id_portomember": parseInt(portomember.id),
             "title": title,
+            "startDate": startDate,
+            "endDate": endDate, 
             "description": description,
-            "id_portomember":portomember.id,
-            "id_skill":parseInt(id_skill),
-        }
+            "id_skill": parseInt(id_skill),
+            "value": parseFloat(value),
+          }
+        
     
-        console.log(body)
-        sendPostOpportunityRequest(url,body)
+        
+        sendPostOpportunityRequest(BASE_URL+'opportunity/',body)
 
 
     })
