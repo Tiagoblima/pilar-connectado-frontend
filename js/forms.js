@@ -160,31 +160,7 @@ async function sendPostSkillPilarMemberRequest(url,body)
 console.log(window.localStorage.getItem('isPilarMember'))
 
 
-async function sendPostPhoneRequest(url,body)
-{
-    let headers = new Headers();
-    
-    headers.append("Content-type","application/json");
 
-    return await fetch(url, {method:"POST",
-            headers: headers,
-
-            body: JSON.stringify(body)
-        }).then(response => {
-       
-            if(response.status != 200){
-
-                response.json().then(error =>{
-                    alert("Error ao cadastrar o telefone")
-                })
-
-            }
-    
-        }).catch(error => {
-            console.log(error)
-            alert("Erro ao cadastrar o Telefone")
-        })
-}
 
 function cadastrarUsuarioPilar()
 {
@@ -296,6 +272,31 @@ const getByIdRequest = async(url, id) =>
   //return await data.json();
 }
 
+async function sendPostPhoneRequest(url,body)
+{
+    let headers = new Headers();
+    
+    headers.append("Content-type","application/json");
+
+    return await fetch(url, 
+        {   method:"POST",
+            headers: headers,
+            body: JSON.stringify(body)
+        }).then(response => {
+       
+            if(response.status != 200){
+
+                response.json().then(error =>{
+                    alert("Error ao cadastrar o telefone")
+                })
+
+            }
+    
+        }).catch(error => {
+            console.log(error)
+            alert("Erro ao cadastrar o Telefone")
+        })
+}
 
 async function sendPostOpportunityRequest(url,body){
 
@@ -303,9 +304,9 @@ async function sendPostOpportunityRequest(url,body){
     
     headers.append("Content-type","application/json");
 
-    await fetch(url, {method:"POST",
+    await fetch(url, {
+            method:"POST",
             headers: headers,
-            mode:'no-cors',
             body: JSON.stringify(body)
         })
     .then(response => {
