@@ -101,12 +101,50 @@ function criaLinha(opportunity)
 
 }
 
+
+async function getPortoMember(url)
+{
+  return await fetch(BASE_URL + url).then(response => response.json());
+}
+
+async function getPilarMember(url)
+{
+  return await fetch(BASE_URL + url).then(response => response.json());
+}
+
+const getByIdRequest = async(id) =>
+{   
+  //fetch(url).then(response => response.json).then(console.log);
+  
+  try{
+     await fetch(BASE_URL + "pilar_member/by/user/" +`${id}/`)
+     profileLink.href = "./profilePilarMember.html"
+  }catch(error){ localStorage.setItem("isPilarMember", false)
+   profileLink.href = "./profilePortoMember.html" 
+  }
+
+
+  //showOpportunityDetails(await opportunity.json());
+  //const portoMember = await fetch(BASE_URL + "opportunity/by/id/2/");
+  //showPortoMemberDetails(portoMember);
+  //return await data.json();
+}
+
 function main()
 {
-  data = 
+  
 
   //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
+  user_id = 86;
+  localStorage.setItem("userId", 86);
+  profileLink = document.getElementById("profileLink");
+ 
+  localStorage.setItem("isPilarMember", true);
+  
+  getByIdRequest( user_id)
+
+
   console.log(data);
   let divRow = document.getElementById('div')
   getOpportunity("opportunity/").then(opportunityList => {
