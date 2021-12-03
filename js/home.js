@@ -117,8 +117,27 @@ const getByIdRequest = async(id) =>
   //fetch(url).then(response => response.json).then(console.log);
   
   try{
-     await fetch(BASE_URL + "pilar_member/by/user/" +`${id}/`)
-     profileLink.href = "./profilePilarMember.html"
+     await fetch(BASE_URL + "pilar_member/by/user/" +`${id}/`).then(response =>
+      
+      {
+        console.log(response);
+        if(response.status == 200)
+        {
+          localStorage.setItem("isPilarMember", true);
+          profileLink.href = "./profilePilarMember.html";
+          profileLink.innerHTML = "Pilar Member";
+          return response.json();
+        }
+        else
+        {
+          localStorage.setItem("isPilarMember", false);
+          profileLink.href = "./profilePortoMember.html";
+          profileLink.innerHTML = "Porto Member";
+          return response.json();
+        }
+      } 
+      )
+     
   }catch(error){ localStorage.setItem("isPilarMember", false)
    profileLink.href = "./profilePortoMember.html" 
   }
@@ -137,7 +156,8 @@ function main()
   //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
   //user_id = 86;
- // localStorage.setItem("userId", 86);
+  localStorage.setItem("userId", 1);
+  let user_id = localStorage.getItem("userId");
   profileLink = document.getElementById("profileLink");
  
   localStorage.setItem("isPilarMember", true);
