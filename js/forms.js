@@ -352,7 +352,7 @@ function cadastrarOportunidade(){
         alert("Selecione uma habilidade")
     }
     console.log(id_user)
-    getByIdRequest('porto_member/by/userId/',id_user).then(portomember =>{
+    getByIdRequest('porto_member/by/user/',id_user).then(portomember =>{
         console.log(portomember)
         body = {
  
