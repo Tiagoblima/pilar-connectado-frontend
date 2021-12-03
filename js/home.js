@@ -112,7 +112,9 @@ async function getPilarMember(url)
   return await fetch(BASE_URL + url).then(response => response.json());
 }
 
-const getByIdRequest = async(id) =>
+
+
+const testIfPilarMember = async(id) =>
 {   
   //fetch(url).then(response => response.json).then(console.log);
   
@@ -156,13 +158,13 @@ function main()
   //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
   //user_id = 86;
-  localStorage.setItem("userId", 1);
+  //localStorage.setItem("userId", 86);
   let user_id = localStorage.getItem("userId");
   profileLink = document.getElementById("profileLink");
  
   localStorage.setItem("isPilarMember", true);
   
-  getByIdRequest( user_id)
+  testIfPilarMember( user_id)
 
 
   console.log(data);
