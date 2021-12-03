@@ -136,8 +136,8 @@ function main()
 
   //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
-  user_id = 86;
-  localStorage.setItem("userId", 86);
+  //user_id = 86;
+ // localStorage.setItem("userId", 86);
   profileLink = document.getElementById("profileLink");
  
   localStorage.setItem("isPilarMember", true);
