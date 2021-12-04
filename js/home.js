@@ -213,7 +213,7 @@ function main()
   //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
   //user_id = 86;
-  localStorage.setItem("userId", 1);
+  //localStorage.setItem("userId", 1);
   let user_id = localStorage.getItem("userId");
   profileLink = document.getElementById("profileLink");
  
