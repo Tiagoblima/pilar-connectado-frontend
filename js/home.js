@@ -175,16 +175,21 @@ const testIfPilarMember = async(id) =>
         if(response.status == 200)
         {
           localStorage.setItem("isPilarMember", true);
+         
           profileLink.href = "./profilePilarMember.html";
           profileLink.innerHTML = "Pilar Member";
-          return response.json();
+          response.json().then(data => {
+          localStorage.setItem("id_PilarMember", data.id);
+          })
         }
         else
         {
           localStorage.setItem("isPilarMember", false);
           profileLink.href = "./profilePortoMember.html";
           profileLink.innerHTML = "Porto Member";
-          return response.json();
+          response.json().then(data => {
+            localStorage.setItem("id_PortoMember", data.id);
+          })
         }
       } 
       )
@@ -208,7 +213,7 @@ function main()
   //let opportunity = JSON.parse(localStorage.getItem("opportunity"));
   //console.log(opportunity);
   //user_id = 86;
-  //localStorage.setItem("userId", 86);
+  localStorage.setItem("userId", 1);
   let user_id = localStorage.getItem("userId");
   profileLink = document.getElementById("profileLink");
  
