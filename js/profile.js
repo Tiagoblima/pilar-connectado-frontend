@@ -42,9 +42,6 @@ function showPilarMemberDetails(user_id)
 
       }
 
-      showPosters(data.id);
-
-
     }
 
   );
@@ -85,8 +82,6 @@ function showUserDetails(user_id)
       
         console.log(data);
       }
-
-
     )
 }
 
@@ -136,8 +131,93 @@ function showSkills(pilarMemberId)
   );
 
 }
-function showPosters(pilarMemberId){
+function showPosters(user_id){
 
+  getByIdRequest("posts/", user_id).then(
+
+    (data) => {
+
+      console.log(data);
+
+      let posts = document.getElementById("posts");
+
+      for(let i = 0; i < data.length; i++){
+
+        /* <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="input-group mb-3">
+                           
+                            <h3 id="posterTitle">Title</span>
+                          </div>
+                          <div class="form-group">
+                            <label for="posterDescription">Descrição</label>
+                            <textarea class="form-control" disabled id="posterDescription" rows="5"></textarea>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <div class="text-center">
+                            <img src="./images/person_computer.svg" class="rounded" alt="..." width="200px" height="200px">
+                          </div>
+                        </div>
+                      </div>
+                    </div>**/
+
+
+
+        let poster = document.createElement("div");
+        poster.className = "row";
+        let col1 = document.createElement("div");
+        col1.className = "col-md-8";
+
+
+        let div1 = document.createElement("div");
+        div1.className = "form-group";
+        let div2 = document.createElement("div");
+        div2.className = "input-group mb-3";
+        let title = document.createElement("h3");
+        title.id = "posterTitle";
+        if (data[i].title == null){
+          title.innerHTML = "Sem título";
+        }else{
+          title.innerHTML = data[i].title;
+        }
+       
+        div2.appendChild(title);
+        div1.appendChild(div2);
+        col1.appendChild(div1);
+        
+
+        let div3 = document.createElement("div");
+        div3.className = "form-group";
+       
+        let textarea = document.createElement("div");
+        textarea.className = "font-weight-light";
+     
+        textarea.id = "posterDescription";
+       
+        textarea.innerHTML = data[i].description;
+      
+        div3.appendChild(textarea);
+        div1.appendChild(div3);
+
+        poster.appendChild(col1);
+        
+
+        let col2 = document.createElement("div");
+        col2.className = "col-md-4";
+
+        poster.appendChild(col2);
+
+        posts.appendChild(poster);
+
+      }
+
+     
+    }
+  )
 
 }
 
@@ -145,15 +225,16 @@ function showPosters(pilarMemberId){
 function main(){
 
  
-
+  let user_id = localStorage.getItem("userId")
   showUserDetails(localStorage.getItem("userId"));
   console.log(localStorage.getItem("isPilarMember"))
   if(localStorage.getItem("isPilarMember") == "true"){
 
-    showPilarMemberDetails(localStorage.getItem("userId"));
+    showPilarMemberDetails(user_id);
+    showPosters(user_id)
 
   }else{
-    showPortoMemberDetails(localStorage.getItem("userId"));
+    showPortoMemberDetails(user_id);
   }
 
 }
