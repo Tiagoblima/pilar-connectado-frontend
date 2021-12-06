@@ -59,6 +59,49 @@ function showSkill(skillId){
 
 }
 
+
+async function sendMatchPostequest(url,body){
+
+  let headers = new Headers();
+  
+  headers.append("Content-type","application/json");
+
+  await fetch(url, {
+          method:"POST",
+          headers: headers,
+          body: JSON.stringify(body)
+      })
+  .then(response => {
+      console.log(body)
+
+      if(response.status == 200){
+         alert("Cadastrado com sucesso!");
+      }else if(response.status == 400){
+          alert("Você já se cadastrou nessa oportunidade!");
+      }
+  }).catch(error => {
+      console.log(error)
+      alert("Erro ao cadastrar")
+  })
+
+}
+
+
+function cadastrarMatch(){
+
+  const body = {
+   
+    "id_opportunity": localStorage.getItem("id_Opoortunity"),
+    "approved":false,
+    "id_pilarmember": localStorage.getItem("id_PilarMember")
+  }
+
+  sendMatchPostequest(BASE_URL + "match/", body);
+    
+}
+
+
+
 function main() {
   
   response = getByIdRequest("opportunity/by/id/", localStorage.getItem("id_Opoortunity"));

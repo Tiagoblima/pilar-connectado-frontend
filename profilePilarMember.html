@@ -32,13 +32,13 @@
         </p>
       </div>
 
-      <div class="col-md-12 order-md-1 mb-4 justify-content-center">
+      <div class="col-md-12 order-md-1 mb-4 ">
          
 
 
         <div class="row">
           
-          <div class="col-md-8 align-items-center" >
+          <div class="col-md-8" >
   
            <div class="row">
               <div class="col-md-4 col-sm-4" >
@@ -64,7 +64,7 @@
               <label for="exampleFormControlTextarea1">Sobre você:</label>
               <textarea class="form-control" disabled id="introduction" rows="5"></textarea>
             </div>
-            <div id="accordion" class="accordion accordion-flush">
+            <div id="accordion" class="accordion accordion-flush col-md-10" >
               <div class="card">
                 <div class="card-header" id="headingOne">
                   <h5 class="mb-0">
@@ -101,35 +101,24 @@
               </div>
               <div class="card">
                 <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <h4 class="pointer" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Meus Posters
-                    </h4>
-                  </h5>
+                  <div class="row">
+                   <div class="col-md-6">
+                    <h5 class="mb-0">
+                      <h4 class="pointer" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        Minhas Experiências
+                      </h4>
+                    </h5>
+                   </div>
+                   <div class="col-md-6">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                      Adicionar Poster
+                    </button>
+                   </div>
+                  </div>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon3">Título</span>
-                            <span id="posterTitle"></span>
-                          </div>
-                          <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Descrição</label>
-                            <textarea class="form-control" disabled id="posterDescription" rows="5"></textarea>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <div class="text-center">
-                            <img src="./images/person_computer.svg" class="rounded" alt="..." width="200px" height="200px">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                  <div class="card-body" id="posts">
+                   
                   </div>
                 </div>
               </div>
@@ -175,26 +164,22 @@
           <div class="col-md-4 order-md-1 mb-4">
             <h4 class="mb-3">Minhas Informações</h4> 
             <div class="row">
-             <div class="col-md-6">
-               <div class="mb-3">
-                <label for="email">Email </label>
-                <span id="email"></span>
-               </div>
-             </div>
-             <div class="col-md-6">
-              <div class="mb-3">
-                <label for="cpf">CPF</label>
-                <span id="cpf"></span>
-              </div>
-             </div>
+              <label for="email" class="mr-3">Email: </label>
+              <span id="email"></span>
             </div>
-            
-            <div class="mb-3">
-              <label for="address">Endereço</label>
+            <div class="row">
+              <label for="cpf" class="mr-3">CPF: </label>
+              <span id="cpf" ></span>
+           </div>
+            <div class="row">
+              <label for="address" class="mr-3">Endereço: </label>
               <span id="address"></span>
             </div>  
           </div>
 
+
+
+          
           
         </div>
         
