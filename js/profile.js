@@ -75,6 +75,7 @@ function showUserDetails(user_id)
       (data) => {
         
         console.log(data);
+        
         document.getElementById("name").innerHTML = data.name;
         document.getElementById("email").innerHTML = data.email;
         document.getElementById("cpf").innerHTML = data.cpf; 
