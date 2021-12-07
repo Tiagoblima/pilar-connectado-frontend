@@ -9,7 +9,6 @@ async function sendPostUserRequest(url,body)
 
     await fetch(BASE_URL+url, {method:"POST",
             headers: headers,
-
             body: JSON.stringify(body)
         })
     .then(response => {
