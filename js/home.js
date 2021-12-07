@@ -163,7 +163,23 @@ async function getPilarMember(url)
 }
 
 
+const testIfPortoMember = async(id) =>{
+  await fetch(BASE_URL + "porto_member/by/user/" +`${id}/`).then(response =>{
 
+    if(response.status == 200)
+    {
+      localStorage.setItem("isPilarMember", false);
+      profileLink.href = "./profilePortoMember.html";
+      profileLink.innerHTML = "Porto Member";
+      response.json().then(data => {
+      localStorage.setItem("id_PortoMember", data.id);
+      })
+    }else{
+      alert("Não é Porto Member nem Pilar Member");
+    }
+   
+  })
+}
 const testIfPilarMember = async(id) =>
 {   
   //fetch(url).then(response => response.json).then(console.log);
@@ -185,12 +201,7 @@ const testIfPilarMember = async(id) =>
         }
         else
         {
-          localStorage.setItem("isPilarMember", false);
-          profileLink.href = "./profilePortoMember.html";
-          profileLink.innerHTML = "Porto Member";
-          response.json().then(data => {
-            localStorage.setItem("id_PortoMember", data.id);
-          })
+         
         }
       } 
       )
@@ -221,7 +232,7 @@ function main()
   localStorage.setItem("isPilarMember", true);
   
   testIfPilarMember( user_id)
-
+  testIfPortoMember(user_id)
 
   console.log(data);
   let divRow = document.getElementById('div');

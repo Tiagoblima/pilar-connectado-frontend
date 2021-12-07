@@ -313,6 +313,7 @@ async function sendPostOpportunityRequest(url,body){
 
         if(response.status == 200){
             console.log("sucesso")
+            location.reload()
         }else{
             alert("Error ao cadastrar")
         }
@@ -329,7 +330,7 @@ function cadastrarOportunidade(){
 
     event.preventDefault()
     
-    localStorage.setItem('userId', 4)
+   
     let title = document.getElementById('title').value
     let description = document.getElementById('description').value
     let id_user = parseInt(window.localStorage.getItem('userId'))
@@ -356,7 +357,7 @@ function cadastrarOportunidade(){
         console.log(portomember)
         body = {
  
-            "id_portomember": parseInt(portomember.id),
+            "id_portomember": parseInt(localStorage.getItem('id_PortoMember')),
             "title": title,
             "startDate": startDate,
             "endDate": endDate, 
