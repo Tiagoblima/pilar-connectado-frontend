@@ -42,6 +42,59 @@ async function sendPostUserRequest(url,body)
   
 }
 
+function validarCPF(cpf)
+{
+    cpf = cpf.replace(/[^\d]+/g,'');	
+	if(cpf == '') return false;	
+	// Elimina CPFs invalidos conhecidos	
+	if (cpf.length != 11 || 
+		cpf == "00000000000" || 
+		cpf == "11111111111" || 
+		cpf == "22222222222" || 
+		cpf == "33333333333" || 
+		cpf == "44444444444" || 
+		cpf == "55555555555" || 
+		cpf == "66666666666" || 
+		cpf == "77777777777" || 
+		cpf == "88888888888" || 
+		cpf == "99999999999")
+			return false;		
+	// Valida 1o digito	
+	add = 0;	
+	for (i=0; i < 9; i ++)		
+		add += parseInt(cpf.charAt(i)) * (10 - i);	
+		rev = 11 - (add % 11);	
+		if (rev == 10 || rev == 11)		
+			rev = 0;	
+		if (rev != parseInt(cpf.charAt(9)))		
+			return false;		
+	// Valida 2o digito	
+	add = 0;	
+	for (i = 0; i < 10; i ++)		
+		add += parseInt(cpf.charAt(i)) * (11 - i);	
+	rev = 11 - (add % 11);	
+	if (rev == 10 || rev == 11)	
+		rev = 0;	
+	if (rev != parseInt(cpf.charAt(10)))
+		return false;		
+	return true;   
+}
+
+function mascara(i){
+   
+    var v = i.value;
+    
+    if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+       i.value = v.substring(0, v.length-1);
+       return;
+    }
+    
+    i.setAttribute("maxlength", "14");
+    if (v.length == 3 || v.length == 7) i.value += ".";
+    if (v.length == 11) i.value += "-";
+ 
+ }
+
 function cadastrarUsuario()
 {
     event.preventDefault()
@@ -62,25 +115,22 @@ function cadastrarUsuario()
     console.log(window.localStorage.getItem('isPilarMember'))
     console.log(password,password2)
     if (password != password2){
-        alert("Senhas não conferem")
-        
+        alert("As senhas são diferentes")
     }
-
-    body = {
-        "email": email,
-        "name": firstName+" "+lastName,
-        "password": password,
-        "address": address,
-        "cpf": cpf
-
+    else
+    {
+        body = {
+            "email": email,
+            "name": firstName+" "+lastName,
+            "password": password,
+            "address": address,
+            "cpf": cpf
+    
+        }
     }
-
     console.log(body)
     sendPostUserRequest(url,body)
 }
-
-
-
 
 
 async function sendPostMemberRequest(url,body)
