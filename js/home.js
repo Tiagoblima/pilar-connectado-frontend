@@ -38,7 +38,7 @@ getSkillsList = async function() {
               if(input.checked==true){
                 console.log(input.id);
                 getByIdRequest("opportunity/by/skill/", input.id).then(data => {
-
+                  document.getElementById("opportunityList").innerHTML = ""
                   data.forEach(element => {
                     let divRow = createCard(element);
                     document.getElementById("opportunityList").appendChild(divRow);
@@ -47,7 +47,7 @@ getSkillsList = async function() {
               }
               else{
                 getByIdRequest("opportunity/by/skill/", input.id).then(data => {
-
+                  document.getElementById("opportunityList").innerHTML = ""
                   data.forEach(element => {
                     let divRow = createCard(element);
                     document.getElementById("opportunityList").removeChild(divRow);
@@ -96,6 +96,7 @@ const getByIdRequest = async(url, id) =>
 function createCard(opportunity)
 {
    //<span class="badge badge-pill badge-primary">Primary</span>
+   
   divRow = document.createElement("div");
   divRow.id = opportunity.id;
  
