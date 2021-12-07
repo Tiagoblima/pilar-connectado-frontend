@@ -175,7 +175,7 @@ const testIfPortoMember = async(id) =>{
       localStorage.setItem("id_PortoMember", data.id);
       })
     }else{
-      alert("Não é Porto Member nem Pilar Member");
+     // alert("Não é Porto Member nem Pilar Member");
     }
    
   })
