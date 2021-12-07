@@ -223,15 +223,9 @@ function main()
 
 
   console.log(data);
-  let divRow = document.getElementById('div')
+  let divRow = document.getElementById('div');
 
-   
-  childNodes = document.getElementById('skillList').childNodes
-                
- 
-
-
- 
+  childNodes = document.getElementById('skillList').childNodes;
   
 }
 
