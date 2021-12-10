@@ -395,15 +395,11 @@ async function sendPostOpportunityRequest(url,body){
         console.log(error)
         alert("Erro ao cadastrar")
     })
-
-
 }
 
 function cadastrarOportunidade(){
 
-
     event.preventDefault()
-    
    
     let title = document.getElementById('title').value
     let description = document.getElementById('description').value
@@ -415,41 +411,32 @@ function cadastrarOportunidade(){
     childNodes = document.getElementById('skillListRadio').childNodes
     let id_skill = null            
     for(i=1; i < childNodes.length; i++){
-    
-        if(childNodes[i].firstChild.checked==true){
+        if(childNodes[i].firstChild.checked==true)
+        {
             id_skill = childNodes[i].firstChild.value
-            
         }
-            
     }
     
     if(id_skill == undefined){
         alert("Selecione uma habilidade")
     }
     console.log(id_user)
-    getByIdRequest('porto_member/by/user/',id_user).then(portomember =>{
-        console.log(portomember)
-        body = {
- 
-            "id_portomember": parseInt(localStorage.getItem('id_PortoMember')),
-            "title": title,
-            "startDate": startDate,
-            "endDate": endDate, 
-            "description": description,
-            "id_skill": parseInt(id_skill),
-            "value": parseFloat(value),
-          }
-        
-    
-        
-        sendPostOpportunityRequest(BASE_URL+'opportunity/',body)
 
-
-    })
-
-   
-
-    
-
-
+    if (validarCampos(title) || validarCampos(description) || validarCampos(startDate) || validarCampos(endDate) || validarCampos(value))
+    {
+        getByIdRequest('porto_member/by/user/',id_user).then(portomember =>{
+            console.log(portomember)
+            body = {
+     
+                "id_portomember": parseInt(localStorage.getItem('id_PortoMember')),
+                "title": title,
+                "startDate": startDate,
+                "endDate": endDate, 
+                "description": description,
+                "id_skill": parseInt(id_skill),
+                "value": parseFloat(value),
+              }
+            sendPostOpportunityRequest(BASE_URL+'opportunity/',body)
+        })
+    }
 }
