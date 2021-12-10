@@ -44,8 +44,8 @@ async function sendPostUserRequest(url,body)
 
 function validarCPF(cpf)
 {
-    cpf = cpf.replace(/[^\d]+/g,'');	
-	if(cpf == '') return false;	
+    cpf = cpf.replace(/[^\d]+/g,'')	
+	if(cpf == '') return false
 	// Elimina CPFs invalidos conhecidos	
 	if (cpf.length != 11 || 
 		cpf == "00000000000" || 
@@ -58,26 +58,26 @@ function validarCPF(cpf)
 		cpf == "77777777777" || 
 		cpf == "88888888888" || 
 		cpf == "99999999999")
-			return false;		
+			return false		
 	// Valida 1o digito	
-	add = 0;	
+	add = 0
 	for (i=0; i < 9; i ++)		
-		add += parseInt(cpf.charAt(i)) * (10 - i);	
+		add += parseInt(cpf.charAt(i)) * (10 - i)	
 		rev = 11 - (add % 11);	
 		if (rev == 10 || rev == 11)		
 			rev = 0;	
 		if (rev != parseInt(cpf.charAt(9)))		
 			return false;		
 	// Valida 2o digito	
-	add = 0;	
+	add = 0	
 	for (i = 0; i < 10; i ++)		
-		add += parseInt(cpf.charAt(i)) * (11 - i);	
-	rev = 11 - (add % 11);	
+		add += parseInt(cpf.charAt(i)) * (11 - i)	
+	rev = 11 - (add % 11)	
 	if (rev == 10 || rev == 11)	
-		rev = 0;	
+		rev = 0	
 	if (rev != parseInt(cpf.charAt(10)))
-		return false;		
-	return true;   
+		return false		
+	return true   
 }
 
 function mascara(i){
@@ -94,6 +94,23 @@ function mascara(i){
     if (v.length == 11) i.value += "-";
  
  }
+
+
+ function mascaraTel(tel)
+{
+    var v = tel.value;
+
+    if(isNaN(v[v.length-1]))
+    { // impede entrar outro caractere que não seja número
+        tel.value = v.substring(0, v.length-1);
+        return;
+    }
+
+    tel.setAttribute("maxlength", "14");
+    if (v.length == 1) tel.value = "(" + tel.value
+    if (v.length == 3) tel.value += ")"
+    if (v.length == 9) tel.value += "-"
+}
 
 function cadastrarUsuario()
 {
@@ -117,6 +134,9 @@ function cadastrarUsuario()
     if (password != password2){
         alert("As senhas são diferentes")
     }
+    if (validarCPF(cpf) === false)
+    {
+    }
     else
     {
         body = {
@@ -130,6 +150,60 @@ function cadastrarUsuario()
     }
     console.log(body)
     sendPostUserRequest(url,body)
+}
+
+function validarCampos(obj)
+{
+    if(obj.length == 0) return false
+    return true
+}
+
+function cadastrarUsuarioPorto()
+{
+    event.preventDefault()
+    let url = BASE_URL+'porto_member/'
+
+    let address = document.getElementById('address').value
+   
+    let company = document.getElementById('company').value
+
+    let id_user = parseInt(window.localStorage.getItem('userId'))
+
+    if (validarCampos(address) || validarCampos(company))
+    {
+        body = {
+            "workaddress": address,
+            "company_name": company,
+            "id_user":id_user,
+        }
+    }
+
+    console.log(body)
+    sendPostMemberRequest(url,body)
+}
+
+function cadastrarUsuarioPilar()
+{
+    event.preventDefault()
+    let url = BASE_URL+'pilar_member/'
+
+    let summary = document.getElementById('summary').value
+    let instagram = document.getElementById('instagram').value
+    let id_user = parseInt(window.localStorage.getItem('userId'))
+
+    
+    if(validarCampos(summary))
+    {
+        body = {
+            "introduction": summary,
+            "instagram": instagram,
+            "evaluation": 1,
+            "id_user":id_user,
+        }
+    }
+
+    console.log(body)
+    sendPostMemberRequest(url,body)
 }
 
 
@@ -207,56 +281,6 @@ async function sendPostSkillPilarMemberRequest(url,body)
 
 
 console.log(window.localStorage.getItem('isPilarMember'))
-
-
-
-
-function cadastrarUsuarioPilar()
-{
-    event.preventDefault()
-    let url = BASE_URL+'pilar_member/'
-
-    let summary = document.getElementById('summary').value
-    let instagram = document.getElementById('instagram').value
-    let id_user = parseInt(window.localStorage.getItem('userId'))
-
-    
-
-    body = {
-        "introduction": summary,
-        "instagram": instagram,
-        "evaluation": 1,
-        "id_user":id_user,
-    }
-
-    console.log(body)
-    sendPostMemberRequest(url,body)
-}
-
-
-
-function cadastrarUsuarioPorto()
-{
-    event.preventDefault()
-    let url = BASE_URL+'porto_member/'
-
-    let address = document.getElementById('address').value
-   
-    let company = document.getElementById('company').value
-
-    let id_user = parseInt(window.localStorage.getItem('userId'))
-
-    
-
-    body = {
-        "workaddress": address,
-        "company_name": company,
-        "id_user":id_user,
-    }
-
-    console.log(body)
-    sendPostMemberRequest(url,body)
-}
 
 
 getSkillsList = async function(elementId, inputType) {
