@@ -33,16 +33,14 @@
     <div class="container">
       <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="./images/pilar-connect.jpg" alt="" width="72" height="72">
-        <h2>Cadastro Membro do Pilar</h2>
+        <h2>Cadastro Oportunidade</h2>
         <p class="lead">
-          Preencha o formulário abaixo para ter acesso a plataforma de oportunidades do Porto Digital.
+          Preencha o formulário abaixo para divulgar oportunidades na plataforma.
         </p>
       </div>
       
         <div class="col-md-12 order-md-1 mb-4 justify-content-center">
-          <h4 class="mb-3">Finalizar Cadastro</h4>
-
-
+          <h4 class="mb-3">Oportunidade</h4>
         
           <form class="needs-validation form-row" novalidate="" onsubmit="cadastrarOportunidade()">
 
@@ -55,7 +53,10 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">Título</div>
                   </div>
-                  <input type="text" class="form-control" id="title" placeholder="Título">
+                  <input required type="text" class="form-control" id="title" placeholder="Título">
+                  <div class="invalid-feedback">
+                    Por favor, insira um título.
+                  </div>
                 </div>
                 
               </div>
@@ -64,23 +65,28 @@
                   <div class="input-group-prepend">
                     <div class="input-group-text">R$</div>
                   </div>
-                  <input type="text" class="form-control" id="value" placeholder="Valor 0,00">
+                  <input required type="number" step="0.01" class="form-control" id="value" placeholder="Valor 0,00">
+                  <div class="invalid-feedback">
+                    Por favor, insira um valor.
+                  </div>
                 </div>
               </div>
             </div>
           
-              
-         
-            
             <div class="form-row mb-3">
 
-
               <div class="col-md-6 col-sm-6" >
-                Inicio: <input id="startDate" width="276" class="selector"/>
+                Inicio: <input required id="startDate" width="276" class="selector"/>
+                <div class="invalid-feedback">
+                  Por favor, insira uma data de início.
+                </div>
               </div>
               
               <div class="col-md-6 col-sm-6">
-                Fim: <input id="endDate" width="276" class="selector" />  
+                Fim: <input id="endDate" width="276" class="selector" />
+                <div class="invalid-feedback">
+                  Por favor, insira uma data para o término.
+                </div>  
               </div>
 
               <script>
@@ -108,7 +114,10 @@
 
             <div class="form-row col-md-11">
               <label for="description">Fale um pouco sobre a oportunidade:</label>
-              <textarea class="form-control" id="description" rows="5"></textarea>
+              <textarea required class="form-control" id="description" rows="5"></textarea>
+              <div class="invalid-feedback">
+                Por favor, fale um pouco mais sobre a oportunidade.
+              </div>
             </div>
 
             <div class="form-row col-auto mt-5">

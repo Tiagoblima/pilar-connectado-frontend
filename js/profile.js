@@ -15,56 +15,42 @@ const getByIdRequest = async(url, id) =>
 function showPilarMemberDetails(user_id)
 {
   
-  getByIdRequest("pilar_member/by/user/", user_id).then(
-
-    (data) => {
-
+  getByIdRequest("pilar_member/by/user/", user_id).then
+  (
+    (data) => 
+    {
       console.log(data);
 
       document.getElementById("instagram").innerHTML = data.instagram;
       document.getElementById("introduction").innerHTML = data.introduction;
 
-      // <span class="fa fa-star" style="color: goldenrod;"></span>
-
       const stars = data.evaluation;
 
       let stars_html =  document.getElementById("stars");
 
-
-      for(let i = 0; i < stars; i++){
-
-
+      for(let i = 0; i < stars; i++)
+      {
         let star = document.createElement("span");
         star.className = "fa fa-star";
         star.style.color = "goldenrod";
         stars_html.appendChild(star);
-        
-
       }
-
     }
-
   );
-
 }
 
 function showPortoMemberDetails(user_id){
 
-  getByIdRequest("porto_member/by/user/", user_id).then(
-
-    (data) => {
-      
+  getByIdRequest("porto_member/by/user/", user_id).then
+  (
+    (data) => 
+    {
       console.log(data);
       document.getElementById("workaddress").innerHTML = data.workaddress;
       document.getElementById("company").innerHTML = data.company_name;
     
     }
-
-
   )
-    
-
-
 }
 
 
@@ -92,31 +78,9 @@ function showSkills(pilarMemberId)
 
   getByIdRequest("skill/by/pilar_member/", pilarMemberId).then(
 
-    (data) => {
+    (data) => 
+    {
 
-      /**
-       * <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon3">Habilidade</span>
-                <span id="skillName"></span>
-              </div>
-              <div>
-                <span class="input-group-text" id="basic-addon3">Nível</span>
-                <span id="skillLevel"></span>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="exampleFormControlTextarea1">Descrição</label>
-              <textarea class="form-control" disabled id="skillsDescription" rows="5"></textarea>
-            </div>
-          </div>
-        </div>
-* 
-       */
       let skills = document.getElementById("skills");
 
       for(let i = 0; i < data.length; i++){
